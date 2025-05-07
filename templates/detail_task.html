@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p class="fs-1">Задача №{{ lst.id }}</p>
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <tbody>
+
+      <tr>
+        <th><p class="fs-2">Название</p></th>
+        <td style="background-color: #AFEEEE"><p class="fs-2">{{ lst.name }}</p></td>
+      </tr>
+
+      <tr>
+        <th><p class="fs-2">Описание</p></th>
+        {% if lst.description %}
+          <td style="background-color: #AFEEEE"><p class="fs-2">{{ lst.description }}</p></td>
+        {% else %}
+          <td style="background-color: #AFEEEE"><p class="fs-2">Нет</p></td>
+        {% endif %}
+      </tr>
+
+      <tr>
+        <th><p class="fs-2">Дата дедлайна</p></th>
+        <td style="background-color: #AFEEEE"><p class="fs-2">{{ lst.deadline_date }}</p></td>
+      </tr>
+
+      <tr>
+        <th><p class="fs-2">Время дедлайна</p></th>
+        {% if lst.deadline_time %}
+          <td style="background-color: #AFEEEE"><p class="fs-2">{{ lst.deadline_time }}</p></td>
+        {% else %}
+          <td style="background-color: #AFEEEE"><p class="fs-2">Нет</p></td>
+        {% endif %}
+      </tr>
+
+      <tr>
+        <th><p class="fs-2">Статус</p></th>
+        {% if lst.finish_date %}
+          <td style="background-color: #b2ec5d"><p class="fs-2">Да</p></td>
+        {% else %}
+          <td style="background-color: #fc6c85"><p class="fs-2">Нет</p></td>
+        {% endif %}
+      </tr>
+
+      <tr>
+        <th><p class="fs-2">Категория важности</p></th>
+          {% if lst.ct.name == 'Неважно, не срочно' %}
+            <td style="background-color: #76ff7a"><p class="fs-2">{{ lst.ct.name }}</p></td>
+          {% elif lst.ct.name == 'Неважно, срочно' %}
+            <td style="background-color: #03c03c"><p class="fs-2">{{ lst.ct.name }}</p></td>
+          {% elif lst.ct.name == 'Важно, не срочно' %}
+            <td style="background-color: #ff7581"><p class="fs-2">{{ lst.ct.name }}</p></td>
+          {% elif lst.ct.name == 'Важно, срочно' %}
+            <td style="background-color: #ff4040"><p class="fs-2">{{ lst.ct.name }}</p></td>
+          {% endif %}
+
+    </tbody>
+  </table>
+</div>
+
+<a href='/switch{{ name_page }}' class="btn btn-primary">
+  Вернуться
+</a>
+
+{% endblock %}

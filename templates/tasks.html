@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if lst[0] or lst[1] or lst[2] or lst[3] %}
+
+    {% for index1 in len_all_lst %}
+
+        <br>
+
+        <div class="card shadow-lg p-4 mb-5 bg-body rounded">
+
+            {% if index1 == 1 %}
+                <p class="fs-1" style="color: red; text-align: center;">{{ lst_name[index1] }}</p>
+            {% elif index1 == 2 %}
+                <p class="fs-1" style="color: blue; text-align: center;">{{ lst_name[index1] }}</p>
+            {% elif index1 == 3 %}
+                <p class="fs-1" style="color: green; text-align: center;">{{ lst_name[index1] }}</p>
+            {% else %}
+                <p class="fs-1" style="text-align: center;">{{ lst_name[index1] }}</p>
+            {% endif %}
+
+            {% if lst[index1] %}
+
+                {% for index2 in len_lst[index1] %}
+                    <p class="fs-2" style="text-align: center;">Задача № {{ index2 + 1 }}</p>
+
+                    <table class="table w-100">
+                      <thead>
+                          <tr class="table-light">
+                              <th scope="col">Название</th>
+                              <th scope="col">Описание</th>
+                              <th scope="col">Закончена?</th>
+                              <th scope="col">Категория важности</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <tr>
+                              <td style="background-color: #AFEEEE">{{ lst[index1][index2].name }}</td>
+
+                              {% if lst[index1][index2].description %}
+                                <td style="background-color: #7fc7ff">{{ lst[index1][index2].description }}</td>
+                              {% else %}
+                                <td style="background-color: #7fc7ff">Нет описания</td>
+                              {% endif %}
+
+                              {% if lst[index1][index2].finish_date %}
+                                <td style="background-color: #b2ec5d">Да</td>
+                              {% else %}
+                                <td style="background-color: #fc6c85">Нет</td>
+                              {% endif %}
+
+                              {% if lst[index1][index2].ct.name == 'Неважно, не срочно' %}
+                                <td style="background-color: #76ff7a">{{ lst[index1][index2].ct.name }}</td>
+                              {% elif lst[index1][index2].ct.name == 'Неважно, срочно' %}
+                                <td style="background-color: #03c03c">{{ lst[index1][index2].ct.name }}</td>
+                              {% elif lst[index1][index2].ct.name == 'Важно, не срочно' %}
+                                <td style="background-color: #ffa99e">{{ lst[index1][index2].ct.name }}</td>
+                              {% elif lst[index1][index2].ct.name == 'Важно, срочно' %}
+                                <td style="background-color: #ff4040">{{ lst[index1][index2].ct.name }}</td>
+                              {% endif %}
+
+                          </tr>
+                      </tbody>
+
+                    </table>
+
+                    <div>
+                        <a href="/detail_task/{{ lst[index1][index2].id }}" class="btn btn-primary">
+                            Подробнее
+                        </a>
+                        <a href="/edit_task/{{ lst[index1][index2].id }}/{{ type_task }}" class="btn btn-warning">
+                            Изменить
+                        </a>
+                        <a href="/delete_task/{{ lst[index1][index2].id }}" class="btn btn-danger">
+                            Удалить
+                        </a>
+                        <a href="/change_status_task/{{ lst[index1][index2].id }}" class="btn btn-success">
+                            Изменить статус
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="fs-4" style="text-align: center;">Нет задач</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+{% else %}
+    <p class="fs-2">Нет задач</p>
+    <img src="/static/img/ничего не найдено.png">
+{% endif %}
+
+<br>
+
+<a href="/add_task/{{ type_task }}" class="btn btn-primary">
+    + задача
+</a>
+
+{% endblock %}

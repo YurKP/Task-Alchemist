@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Alchemist - Магия продуктивности</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #8a5a44;
+            --accent-color: #f8c537;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #4a2d6e);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #5a3d83;
+            border-color: #5a3d83;
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .alchemy-icon {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Навигация -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--primary-color);">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hourglass-half me-2"></i>
+                Time Alchemist
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/beautiful_page">Главная</a>
+                </ul>
+                <a href="/login" class="btn btn-outline-light ms-lg-3">Войти</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">Превращаем время в результаты</h1>
+            <p class="lead mb-5">Time Alchemist помогает вам организовать задачи, расставить приоритеты и достигать большего с меньшим стрессом.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/login" class="btn btn-light btn-lg px-4">
+                    <i class="fas fa-play me-2"></i> Начать сейчас
+                </a>
+                <a href="#features" class="btn btn-outline-light btn-lg px-4">
+                    <i class="fas fa-search me-2"></i> Узнать больше
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной контент -->
+    <div class="container mb-5">
+        <!-- Возможности -->
+        <section id="features" class="mb-5 py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Ваш идеальный помощник для задач</h2>
+                <p class="lead text-muted">Превращайте хаос в порядок с помощью наших мощных инструментов</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 shadow-sm">
+                        <div class="feature-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>Умные списки</h3>
+                        <p>Создавайте, организуйте и отслеживайте задачи в интуитивно понятных списках. Группируйте по проектам или приоритетам.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 shadow-sm">
+                        <div class="feature-icon">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <h3>Автоматизация</h3>
+                        <p>Повторяющиеся задачи экономят ваше время. Сфокусируйтесь на важном, а рутину доверьте нам.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card feature-card p-4 shadow-sm">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Аналитика</h3>
+                        <p>Отслеживайте свою продуктивность с помощью наглядных отчетов. Узнайте, на что уходит ваше время, и оптимизируйте его использование.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как это работает -->
+        <section class="mb-5 py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Task Management" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4">Алхимия вашей продуктивности</h2>
+                    <p>Time Alchemist основан на принципах психологии продуктивности и лучших практиках тайм-менеджмента. Мы превращаем свинец ваших задач в золото достижений.</p>
+
+                    <a href="/login" class="btn btn-primary mt-3">Попробовать</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="mb-5 py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Что говорят наши алхимики</h2>
+                <p class="lead text-muted">Присоединяйтесь к тысячам довольных пользователей</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 testmonial-card">
+                        <div class="card-body">
+                            <p class="card-text mb-4">"Time Alchemist полностью изменил мой подход к организации задач. Теперь я успеваю в 2 раза больше!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="/static/img/профиль.png" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Анна К.</h6>
+                                    <small class="text-muted">Фрилансер</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 testmonial-card">
+                        <div class="card-body">
+                            <p class="card-text mb-4">"Лучшее приложение для управления задачами, которое я использовал. Особенно ценю аналитику и отчеты."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="/static/img/профиль.png" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Дмитрий С.</h6>
+                                    <small class="text-muted">IT-менеджер</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 testmonial-card">
+                        <div class="card-body">
+                            <p class="card-text mb-4">"Простота использования в сочетании с мощными функциями. Идеально для студентов!"</p>
+                            <div class="d-flex align-items-center">
+                                <img src="/static/img/профиль.png" alt="User" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Елена М.</h6>
+                                    <small class="text-muted">Студентка</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center py-5 mb-4 bg-light rounded-3">
+            <h2 class="fw-bold mb-4">Готовы стать алхимиком своего времени?</h2>
+            <p class="lead mb-5">Присоединяйтесь к Time Alchemist сегодня и начните превращать свое время в достижения</p>
+            <a href="/login" class="btn btn-primary btn-lg px-5">
+                <i class="fas fa-gem me-2"></i> Начать прямо сейчас
+            </a>
+        </section>
+    </div>
+
+    <!-- Подвал -->
+    <footer class="py-5 text-center">  <!-- Добавил text-center -->
+        <div class="container">
+            <div class="row justify-content-center">  <!-- Добавил justify-content-center -->
+                <div class="col-lg-6 mb-4">  <!-- Уменьшил ширину колонки -->
+                    <h5 class="text-uppercase mb-4">Time Alchemist</h5>
+                    <p>Превращаем ваше время в золото продуктивности с 2025 года.</p>
+                </div>
+            </div>
+
+            <hr class="my-4 bg-light mx-auto" style="max-width: 200px;">  <!-- Центрируем линию -->
+
+            <div class="row">
+                <div class="col-12 text-center">  <!-- Полноширинная центрированная колонка -->
+                    <p class="mb-0">&copy; 2025 Time Alchemist. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

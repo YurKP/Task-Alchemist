@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if lst %}
+    <p class="fs-1">Задачи в этом проекте:</p>
+    <div class="card shadow-lg p-4 mb-5 bg-body rounded">
+        {% for item in lst %}
+
+            {% if item.founder == user_id %}
+                <p class="fs-2">Задача № {{ item.id }} (Ваша задача)</p>
+            {% else %}
+                <p class="fs-2">Задача № {{ item.id }}</p>
+            {% endif %}
+
+            <table class="table w-100">
+              <thead>
+                  <tr class="table-light">
+                      <th scope="col">Название</th>
+                      <th scope="col">Описание</th>
+                      <th scope="col">Закончена?</th>
+                      <th scope="col">Категория важности</th>
+                      <th scope="col">Дата дедлайна</th>
+                      <th scope="col">Время дедлайна</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                  <tr>
+                      <td style="background-color: #AFEEEE">{{ item.name }}</td>
+
+                      {% if item.description %}
+                        <td style="background-color: #7fc7ff">{{ item.description }}</td>
+                      {% else %}
+                        <td style="background-color: #7fc7ff">Нет описания</td>
+                      {% endif %}
+
+                      {% if item.is_finished %}
+                        <td style="background-color: #b2ec5d">Да</td>
+                      {% else %}
+                        <td style="background-color: #fc6c85">Нет</td>
+                      {% endif %}
+
+                      {% if item.ct.name == 'Неважно, не срочно' %}
+                        <td style="background-color: #76ff7a">{{ item.ct.name }}</td>
+                      {% elif item.ct.name == 'Неважно, срочно' %}
+                        <td style="background-color: #03c03c">{{ item.ct.name }}</td>
+                      {% elif item.ct.name == 'Важно, не срочно' %}
+                        <td style="background-color: #ffa99e">{{ item.ct.name }}</td>
+                      {% elif item.ct.name == 'Важно, срочно' %}
+                        <td style="background-color: #ff4040">{{ item.ct.name }}</td>
+                      {% endif %}
+
+                      <td style="background-color: #AFEEEE">{{ item.deadline_date }}</td>
+
+                      <td style="background-color: #AFEEEE">{{ item.deadline_time }}</td>
+
+                  </tr>
+              </tbody>
+
+            </table>
+
+    {% endfor %}
+
+{% else %}
+    <p class="fs-1">Нет задач</p>
+    <img src="/static/img/ничего не найдено.png">
+{% endif %}
+
+{% endblock %}

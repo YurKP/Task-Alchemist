@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="centered-text">
+    <h1>Задача</h1>
+    <form action="" method="post" class="col-12">
+
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control") }}<br>
+            {% for error in form.name.errors %}
+                <p class="alert alert-danger" role="alert">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        </p>
+
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(class="form-control") }}<br>
+        </p>
+
+        <p>
+            {{ form.project.label }}<br>
+            {{ form.project(class="form-control") }}<br>
+        </p>
+
+        <p>
+            {{ form.category.label }}<br>
+            {{ form.category(class="form-control") }}<br>
+        </p>
+
+        {% if flag_form == -1 or flag_form == 0 %}
+            <p>
+                {{ form.date.label }}<br>
+                {{ form.date(class="form-control") }}<br>
+            </p>
+        {% endif %}
+
+        <p>
+            {{ form.deadline_time.label }}<br>
+            {{ form.deadline_time(class="form-control") }}<br>
+        </p>
+
+        {% if flag_form != -1 %}
+            {{ form.replay() }} {{ form.replay.label }}
+        {% endif %}
+
+        <p><br>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        {{ message }}
+
+    </form>
+</div>
+
+{% endblock %}

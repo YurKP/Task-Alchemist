@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="centered-text">
+      <h1>{{ greeting }}, {{ current_user.name }} {{ current_user.surname }}!</h1>
+      <h1>Сегодня</h1>
+      <p class="fs-2">{{ weekday }}, {{ date }} {{ month }}</p>
+      <a class="btn btn-primary " href="/switch/tasks_today">Перейти к задачам на сегодня</a>
+</div>
+
+{% endblock %}

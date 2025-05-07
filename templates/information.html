@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card shadow-lg p-4 mb-5 bg-body rounded">
+                <div class="text-center mb-4">
+                    <!-- Картинка из папки static/images -->
+                    <img src="{{ photo }}"
+                         class="profile-img mb-3"
+                         alt="Фото профиля"
+                         id="profileImage"
+                        width="100"
+                        height="100">
+
+                    <!-- Форма для загрузки новой картинки -->
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <p>
+                                {{ form.photo.label }}<br>
+                                {{ form.photo() }}
+
+                                {% for error in form.photo.errors %}
+                                  <div class="alert alert-danger" role="alert">
+                                      {{ error }}
+                                  </div>
+                                {% endfor %}
+                            </p>
+
+                            <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+                        </div>
+
+
+
+                    </form>
+                </div>
+
+                <!-- Информация о пользователе -->
+                <div class="mb-4">
+                    <h2 class="text-center">{{ surname }} {{ name }}</h2>
+                    <p class="fs-3 text-center">ID: {{ id }}</p>
+                </div>
+
+                <!-- Прогресс-бар -->
+                {% if percentage1 or percentage2 %}
+                    <div class="container mt-5">
+                        <div class="progress" style="height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ percentage1 * 100 }}%"
+                                 aria-valuenow="{{ percentage1 * 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: {{ percentage2 * 100 }}%"
+                                 aria-valuenow="{{ percentage2 * 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="fs-2" style="text-align: center;">Сегодня ничего не решено</p>
+                {% endif %}
+
+                <p class="fs-5" style="text-align: center;">Количество решенных задач: {{ count1 }}</p>
+                <p class="fs-5" style="text-align: center;">Количество нерешенных задач: {{ count2 }}</p>
+
+                <a href="/switch/random_task" class="btn btn-primary">Выбрать любую задачу</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

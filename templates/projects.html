@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if lst[0] or lst[1] or lst[2] %}
+
+    {% for index1 in len_all_lst %}
+
+        <br>
+
+        <div class="card shadow-lg p-4 mb-5 bg-body rounded">
+
+            {% if index1 == 1 %}
+                <p class="fs-1" style="color: red; text-align: center;">{{ lst_name[index1] }}</p>
+            {% elif index1 == 2 %}
+                <p class="fs-1" style="color: green; text-align: center;">{{ lst_name[index1] }}</p>
+            {% else %}
+                <p class="fs-1" style="text-align: center;">{{ lst_name[index1] }}</p>
+            {% endif %}
+
+            {% if lst[index1] %}
+
+                {% for index2 in len_lst[index1] %}
+                    <p class="fs-2" style="text-align: center;">Проект № {{ index2 + 1 }}</p>
+
+                    <table class="table w-100">
+                      <thead>
+                          <tr class="table-light">
+                              <th scope="col">Название</th>
+                              <th scope="col">Описание</th>
+                              <th scope="col">Закончен?</th>
+                              <th scope="col">Руководитель</th>
+                              <th scope="col">Участники</th>
+                              <th scope="col">Дедлайн</th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                          <tr>
+                              <td style="background-color: #AFEEEE">{{ lst[index1][index2].name }}</td>
+
+                              {% if lst[index1][index2][1] %}
+                                <td style="background-color: #7fc7ff">{{ lst[index1][index2].description }}</td>
+                              {% else %}
+                                <td style="background-color: #7fc7ff">Нет описания</td>
+                              {% endif %}
+
+                              {% if lst[index1][index2].is_finished %}
+                                <td style="background-color: #b2ec5d">Да</td>
+                              {% else %}
+                                <td style="background-color: #fc6c85">Нет</td>
+                              {% endif %}
+
+                              <td style="background-color: #7fc7ff">{{ lst[index1][index2].founder }}</td>
+
+                              {% if lst[index1][index2].participants %}
+                                <td style="background-color: #7fc7ff">{{ lst[index1][index2].participants }}</td>
+                              {% else %}
+                                <td style="background-color: #7fc7ff">Нет участников</td>
+                              {% endif %}
+
+                              <td style="background-color: #7fc7ff">{{ lst[index1][index2].deadline }}</td>
+
+                          </tr>
+                      </tbody>
+
+                    </table>
+
+                    <div>
+                        <a href="/tasks/projects/{{ lst[index1][index2].id }}" class="btn btn-primary">
+                            Задачи проекта
+                        </a>
+
+                        {% if flags[index2] %}
+                            <a href="/edit_project/{{ lst[index1][index2].id }}" class="btn btn-warning">
+                                Изменить
+                            </a>
+                            <a href="/delete_project/{{ lst[index1][index2].id }}" class="btn btn-danger">
+                                Удалить
+                            </a>
+                            <a href="/change_status_project/{{ lst[index1][index2].id }}" class="btn btn-success">
+                                Изменить статус
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+        {% else %}
+            <p class="fs-4" style="text-align: center;">Нет проектов</p>
+        {% endif %}
+        </div>
+
+    {% endfor %}
+
+{% else %}
+    <p class="fs-2">Нет проектов</p>
+    <img src="static/img/ничего не найдено.png">
+{% endif %}
+
+<a href="/add_project" class="btn btn-primary">
+    + проект
+</a>
+
+{% endblock %}
