@@ -25,8 +25,4 @@ class Task(db_session.SqlAlchemyBase, SerializerMixin):
 
     finish_date = sqlalchemy.Column(sqlalchemy.Date, nullable=True)
 
-    # непонятно, зачем они
-    fnd = orm.relationship('User')
-    prj = orm.relationship('Project')
-
     ct = orm.relationship('Category')
