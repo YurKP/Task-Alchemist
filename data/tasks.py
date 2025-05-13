@@ -26,3 +26,4 @@ class Task(db_session.SqlAlchemyBase, SerializerMixin):
     finish_date = sqlalchemy.Column(sqlalchemy.Date, nullable=True)
 
     ct = orm.relationship('Category')
+    fnd = orm.relationship('User')
