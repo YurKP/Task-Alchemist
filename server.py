@@ -47,7 +47,7 @@ def index():
         greeting = ''
 
         if 0 <= time_day < 6:
-            greeting = 'Здравствуйте!'
+            greeting = 'Здравствуйте'
         elif 6 <= time_day < 12:
             greeting = 'Доброе утро'
         elif 12 <= time_day < 18:
@@ -715,7 +715,7 @@ def reqister():
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
-        return redirect('/')
+        return redirect('/login')
 
     return render_template('register.html', form=form)
 
